@@ -1,0 +1,15 @@
+server:
+  port: 8080
+
+spring:
+  application:    name: api-gateway-service
+  # cloud config
+  config:
+    import: 'optional:configserver:'
+  cloud:
+    config:
+      name: eureka-config, token-config
+      uri:
+      - http://localhost:8888
+
+

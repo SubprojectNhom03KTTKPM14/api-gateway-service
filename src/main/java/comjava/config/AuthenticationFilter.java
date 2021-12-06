@@ -38,8 +38,6 @@ public class AuthenticationFilter implements GatewayFilter {
 		return chain.filter(exchange);
 	}
 
-	/* PRIVATE */
-
 	private Mono<Void> onError(ServerWebExchange exchange, String err, HttpStatus httpStatus) {
 		ServerHttpResponse response = exchange.getResponse();
 		response.setStatusCode(httpStatus);

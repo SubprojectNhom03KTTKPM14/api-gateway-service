@@ -30,16 +30,17 @@ public class GatewayConfig {
                 .route("product-service", r -> r.path("/product-service/admin/**")
                         .filters(f -> f.filter(adminFilter))
                         .uri("lb://product-service/admin"))
-                .route("product-service", r -> r.path("/product-service/**")
-                        .filters(f -> f.filter(filter))
-                        .uri("lb://product-service"))
+                .route("product-service", r -> r.path("/product-service/products/**")
+                        .uri("lb://product-service/products"))
+                .route("product-service", r -> r.path("/product-service/categories/**")
+                        .uri("lb://product-service/categories"))
               
                 .route("order-service", r -> r.path("/order-service/admin/**")
                         .filters(f -> f.filter(adminFilter))
                         .uri("lb://order-service/admin"))
-                .route("order-service", r -> r.path("/order-service/**")
+                .route("order-service", r -> r.path("/order-service/orders/**")
                         .filters(f -> f.filter(filter))
-                        .uri("lb://order-service"))
+                        .uri("lb://order-service/orders"))
                 .build();
     }
 
